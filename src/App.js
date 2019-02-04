@@ -53,23 +53,56 @@ class App extends Component {
 			"disabledOrigins" : [  
 	
 			]
-		}
-	}
+		},
+ filter:''	}
+
   }
-    
+    origins = (e)=>{this.setState({filter:e})}
 	
 
   render() {
+	  if(this.state.filter==''){
     return (
       <div className="App">
 		   <div className='header'><h2>Styx Origins Dashboard</h2></div>
-		   <Filter/>
-           <Data Active={this.state['Shopping-App'].activeOrigins} Inactive={this.state['Shopping-App'].inactiveOrigins} app={this.state['Shopping-App'].appId}/> 
-           
-		   <Data Active={this.state['Landing-App'].activeOrigins} Inactive={this.state['Landing-App'].inactiveOrigins} app={this.state['Landing-App'].appId}/>
-		
-      </div>
-    );
+		   <Filter origins={this.origins}/>
+           <Data Active={this.state['Shopping-App'].activeOrigins} Inactive={this.state['Shopping-App'].inactiveOrigins} app={this.state['Shopping-App'].appId} filter={this.state.filter}/> 
+		   <Data Active={this.state['Landing-App'].activeOrigins} Inactive={this.state['Landing-App'].inactiveOrigins} app={this.state['Landing-App'].appId} filter= {this.state.filter}/>
+		 
+	  </div>
+	
+	);
+	}if(this.state.filter=='s'||this.state.filter=='sh'){
+		return (
+			<div className="App">
+				 <div className='header'><h2>Styx Origins Dashboard</h2></div>
+				 <Filter origins={this.origins}/>
+				 <Data Active={this.state['Shopping-App'].activeOrigins} Inactive={this.state['Shopping-App'].inactiveOrigins} app={this.state['Shopping-App'].appId} filter={this.state.filter}/> 
+				 
+			   
+			</div>
+		  
+		  );
+	}if(this.state.filter=='l'||this.state.filter=='la'){
+		return (
+			<div className="App">
+				 <div className='header'><h2>Styx Origins Dashboard</h2></div>
+				 <Filter origins={this.origins}/>
+				 <Data Active={this.state['Landing-App'].activeOrigins} Inactive={this.state['Landing-App'].inactiveOrigins} app={this.state['Landing-App'].appId} filter= {this.state.filter}/>
+			   
+			</div>
+		  
+		  );
+	}else{return (
+		<div className="App">
+			 <div className='header'><h2>Styx Origins Dashboard</h2></div>
+			 <Filter origins={this.origins}/>
+			
+		   
+		</div>
+	  
+	  );}
+
   }
 }
 
