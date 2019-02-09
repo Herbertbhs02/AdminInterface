@@ -57,6 +57,7 @@ const Data = (props) =>{
           <legend>{h[4]}</legend> 
            {b[4]}
            {c[4]}
+           {d[4]}
       </fieldset>
 
       <fieldset>
@@ -69,42 +70,49 @@ const Data = (props) =>{
           <legend>{h[6]}</legend> 
            {b[6]}
            {c[6]}
+           {d[6]}
       </fieldset>
 
       <fieldset>
           <legend>{h[7]}</legend> 
            {b[7]}
            {c[7]}
+           {d[7]}
       </fieldset>
 
       <fieldset>
           <legend>{h[8]}</legend> 
            {b[8]}
            {c[8]}
+           {d[8]}
       </fieldset>
 
       <fieldset>
           <legend>{h[9]}</legend> 
            {b[9]}
            {c[9]}
+           {d[9]}
       </fieldset>
 
       <fieldset>
           <legend>{h[10]}</legend> 
            {b[10]}
            {c[10]}
+           {d[10]}
       </fieldset>
 
       <fieldset>
           <legend>{h[11]}</legend> 
            {b[11]}
            {c[11]}
+           {d[11]}
       </fieldset>
 
       <fieldset>
           <legend>{h[12]}</legend> 
             {b[12]}
             {c[12]}
+            {d[12]}
       </fieldset>
 
     </div>
