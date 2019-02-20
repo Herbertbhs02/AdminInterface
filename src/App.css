@@ -38,3 +38,7 @@ tr,td{
 .inactive{
   background: red;
 }
+
+.disable{
+  background:#ff8c00;
+}

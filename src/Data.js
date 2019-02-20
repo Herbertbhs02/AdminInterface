@@ -1,5 +1,6 @@
 import React from 'react';
 import './Data.css';
+import uuid from 'uuid';
 const Data = (props) =>{
   
 
@@ -8,21 +9,32 @@ const Data = (props) =>{
     var Inactive = props.num[appName].inactiveOrigins
     var disabled = props.num[appName].disabledOrigins
    
-    var activeMap =Active.map((origins)=><table ><tr className='active'><td>{origins.id}</td><td>{origins.host}</td><td>Active</td> <button onClick={(e)=>{props.dis(origins.host)}}>Disable</button></tr></table>) 
-    var inactiveMap = Inactive.map((origins)=><table><tr className='inactive'><td>{origins.id}</td><td>{origins.host}</td><td>Inactive</td> <button onClick={(e)=>{props.dis(origins.host)}}>Disable</button ></tr></table>)
-    var disableMap = disabled.map((origins)=><table><tr className='inactive'><td>{origins.id}</td><td>{origins.host}</td><td>Disabled</td> <button onClick={(e)=>{props.enable(origins.host)}}>Enable</button></tr></table>)
-  
-    return <fieldset><legend>{appName}</legend> {activeMap}{inactiveMap}{disableMap}</fieldset>
+    var activeMap =Active.map((origin)=><table><tbody><tr className='active'><td key={uuid()}>{origin.id}</td><td key={uuid()}>{origin.host}</td><td>Active</td><button onClick={(e)=>{props.dis(appName, origin.id)}}>Disable</button></tr></tbody></table>) 
+    var inactiveMap = Inactive.map((origin)=><table><tbody><tr className='inactive'><td key={uuid()}>{origin.id}</td><td key={uuid()}>{origin.host}</td><td>Inactive</td><button onClick={(e)=>{props.dis(appName, origin.id)}}>Disable</button></tr></tbody></table>)
+    var disableMap = disabled.map((origin)=><table><tbody><tr className='disable'><td key={uuid()}>{origin.id}</td><td key={uuid()}>{origin.host}</td><td>Disabled</td><button onClick={(e)=>{props.enable(appName, origin.id)}}>Enable</button></tr></tbody></table>)
+        
+    var displayMap = [];
+
+    if (props.filter.active) {
+      displayMap = displayMap.concat(activeMap)
+    }
+    if (props.filter.inactive) {
+      displayMap = displayMap.concat(inactiveMap)
+    }
+    if (props.filter.disable) {
+      displayMap = displayMap.concat(disableMap)
+    }
+        
+    return <fieldset><legend>{appName}</legend> {displayMap}</fieldset>
+                             
 
     }  )
       
- // const combined = (props.filter=='')?<div>{ActiveMap}{InactiveMap}</div>:(props.filter=='ac')?<div>{ActiveMap}</div>:(props.filter=='in')?<div>{InactiveMap}</div>:<div>Enter more charactor</div>
- 
+
     return (  
     
     <div className='data'>
-    {zx}
-      
+         {zx} 
     </div>
   )  
 }

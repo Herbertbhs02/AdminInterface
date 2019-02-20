@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Data from './Data';
-
+import Filter from './Filter';
 //import Filter from './Filter'
 import './App.css';
 
@@ -51,7 +51,10 @@ class App extends Component {
         "disabledOrigins" : [ ]
       }
     },
-									current:['shopping','landing'],
+                  current:['shopping','landing'],
+                  filter:{active:true,
+                    inactive:true,
+                    disable:true}
 									
                  }
 
@@ -67,9 +70,26 @@ class App extends Component {
                         }   
 	  
    // origins = (e)=>{this.setState({filter:e})}
-   // <Filter origins={this.origins}/>
-disable = (e)=>{alert(`Do really want to disable: ${e}`)}
-enable = (e)=>{alert(`Do really want to enable: ${e}`)}
+    submitted = (filter)=>{this.setState({filter})}//filter 
+
+
+disable = (appId, originId)=>{  console.log(appId); var url =`http://styxdemo.greyfire.co.uk:9000/admin/tasks/origins?cmd=disable_origin&appId=${appId}&originId=${originId}`
+              fetch(url,{
+                method:'post'
+                
+              })
+              .then(response => response.json(originId))
+               .then((data)=>{ this.setState({response:data,current: Object.keys(data),len:this.state.current.length})}) 
+              
+              }
+enable = (appId, originId)=>{   var url =`http://styxdemo.greyfire.co.uk:9000/admin/tasks/origins?cmd=enable_origin&appId=${appId}&originId=${originId}`
+              fetch(url,{
+                method:'post'              
+              })
+              .then(response => response.json(originId))
+               .then((data)=>{ this.setState({response:data,current: Object.keys(data),len:this.state.current.length})}) 
+              
+              }
 
   render() {
     
@@ -78,8 +98,8 @@ enable = (e)=>{alert(`Do really want to enable: ${e}`)}
       <div className="App">
         <div className='header'><h3>Styx Origins Dashboard</h3></div>
      
-              
-            <Data num={this.state.response} current={this.state.current} dis={this.disable} enable={this.enable} />
+            <Filter submit={selection =>this.submitted(selection)}/>
+            <Data num={this.state.response} current={this.state.current} dis={this.disable} enable={this.enable} filter={this.state.filter}/>
               
 		  </div>
 	  );
