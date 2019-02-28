@@ -62,7 +62,7 @@ class App extends Component {
   
 
    componentDidMount() {
-    var url ='http://styxdemo.greyfire.co.uk:9000/admin/origins/status?pretty'
+    var url ='/admin/origins/status?pretty'
     
     fetch(url)
     .then(response => response.json())
@@ -73,7 +73,7 @@ class App extends Component {
     submitted = (filter)=>{this.setState({filter})}//filter 
 
 
-disable = (appId, originId)=>{  console.log(appId); var url =`http://styxdemo.greyfire.co.uk:9000/admin/tasks/origins?cmd=disable_origin&appId=${appId}&originId=${originId}`
+disable = (appId, originId)=>{  console.log(appId); var url =`/admin/tasks/origins?cmd=disable_origin&appId=${appId}&originId=${originId}`
               fetch(url,{
                 method:'post'
                 
@@ -82,7 +82,7 @@ disable = (appId, originId)=>{  console.log(appId); var url =`http://styxdemo.gr
                .then((data)=>{ this.setState({response:data,current: Object.keys(data),len:this.state.current.length})}) 
               
               }
-enable = (appId, originId)=>{   var url =`http://styxdemo.greyfire.co.uk:9000/admin/tasks/origins?cmd=enable_origin&appId=${appId}&originId=${originId}`
+enable = (appId, originId)=>{   var url =`/admin/tasks/origins?cmd=enable_origin&appId=${appId}&originId=${originId}`
               fetch(url,{
                 method:'post'              
               })
