@@ -5,6 +5,8 @@
   margin-right: 350px;
   border: 2px solid brown;
   border-radius: 5px;
+  min-width: 370px;
+  
 }
 .header{
   background-color: #ffa07a;
