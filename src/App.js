@@ -73,7 +73,7 @@ class App extends Component {
     submitted = (filter)=>{this.setState({filter})}//filter 
 
 
-disable = (appId, originId)=>{  console.log(appId); var url =`/admin/tasks/origins?cmd=disable_origin&appId=${appId}&originId=${originId}`
+disable = (appId, originId)=>{ var url =`/admin/tasks/origins?cmd=disable_origin&appId=${appId}&originId=${originId}`
               fetch(url,{
                 method:'post'
                 
