@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   submit = (userInput)=>{
-  var url ='http://styxdemo.greyfire.co.uk:9000/admin/origins/status?pretty'
+  var url ='/admin/origins/status?pretty'
   
   fetch(url)
    .then(response => response.json())
