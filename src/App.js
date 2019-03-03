@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Data from './Data';
-import Filter from './Filter';
-//import Filter from './Filter'
+import Filter from './Filter'
+
 import './App.css';
 
 class App extends Component {
@@ -69,7 +69,7 @@ class App extends Component {
     .then((data)=>{ this.setState({response:data,current: Object.keys(data),len:this.state.current.length})})  
                         }   
 	  
-   // origins = (e)=>{this.setState({filter:e})}
+   
     submitted = (filter)=>{this.setState({filter})}//filter 
 
 
@@ -81,7 +81,8 @@ disable = (appId, originId)=>{ var url =`/admin/tasks/origins?cmd=disable_origin
               .then(response => response.json(originId))
                .then((data)=>{ this.setState({response:data,current: Object.keys(data),len:this.state.current.length})}) 
               
-              }
+              }    
+
 enable = (appId, originId)=>{   var url =`/admin/tasks/origins?cmd=enable_origin&appId=${appId}&originId=${originId}`
               fetch(url,{
                 method:'post'              
@@ -97,7 +98,6 @@ enable = (appId, originId)=>{   var url =`/admin/tasks/origins?cmd=enable_origin
     return (
       <div className="App">
         <div className='header'><h3>Styx Origins Dashboard</h3></div>
-     
             <Filter submit={selection =>this.submitted(selection)}/>
             <Data num={this.state.response} current={this.state.current} dis={this.disable} enable={this.enable} filter={this.state.filter}/>
               
